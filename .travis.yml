@@ -1,0 +1,31 @@
+sudo: false
+
+env:
+  global:
+    - REGISTRY_USER=geautomation
+    - secure: "Z7pGuHEmCe+zroGJpaY4JdoKqkvpfFGttaHnaS2+qSXFgajvQbD6pxjWgazWWpuxxsRIRJykSgUU0j+e4jtQPt1cgr5We8dlO5uLFQQOej1L6lz/eJeByvxxY3j00HQ7B5e8a3Ugofm4Rtxee4HuVZK3MtA6D0WLin95T719rqhv4LlHjF2de2ZnEFSqDPBRZDAaQLOjT9UXA16hy37CpvWObxYu0xuH6Q1KACtKoRhnZCpM8phow+tFqJQYT8MeLO2NtQCntoHlvMUpWdyjKX9+TXO4vQzVRPUKkjHQlCeddKxIQqR+5rjCv2FijKeVzd7Mpri8KInG2iVgppPiv5l5P5ONuycHzsYLXBOG8b3pct5NhRjkYDpTaihyJ0FBvIBYy3ySlw7RWOCc46wHG6vzSLg8eev7DtOlnLD/DFZ0nQo+J6yGK8qtPZT4OatiiOVA95Q4QSqg2QHK+XIqNdvabQzbx9K7Y46AJR1U9h1rPB0+axF7alJ8A6nyZkStD7357RLzYVpTpWeJSe3SIHrAZZ+uE0Lpq68WZp4VvJlOTLJ+YnBI82rP7eBlKWIfx38jp4nP5CpdTrbBrKGACiExdCTltBGG+R32m5+8YcnnlZh0ZiMW3a8Y89CXuOqwKovGlnHqIVjuQDZLfpkAgSUivSRmrisg8Wa+Qg6lwsI="
+
+jobs:
+  include:
+    - stage: build
+      sudo: required
+      services:
+        - docker
+      before_script:
+        - COMMIT_TAG=${TRAVIS_COMMIT::7}
+        - TAG=${TRAVIS_BRANCH}_$COMMIT_TAG
+        - image="girleffect/creative-development-toolkit"
+        # Fetch existing image to use as cache
+        - docker pull "$image" || true
+      script:
+        - docker build --pull --cache-from "$image" --tag "$image" .
+      after_script:
+        - docker images
+      before_deploy:
+        - pip install docker-ci-deploy==0.3.0
+        - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+      deploy:
+        - provider: script
+          script: dcd --tag $TAG --tag latest -- "$image"
+          on:
+            branch: master
