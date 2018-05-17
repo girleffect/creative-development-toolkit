@@ -1,0 +1,224 @@
+.tabs-left {
+  border: none;
+}
+
+.tabs-left > li {
+  float: none;
+  margin: 0px;
+
+}
+
+.tabs-left > li.active > a,
+.tabs-left > li.active > a:hover,
+.tabs-left > li.active > a:focus {
+
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border: none;
+  border-left: 5px solid $color_PearlAqua;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin: 0;
+  background: #F1FBF9;
+  color: $color_DarkElectricBlue;
+}
+
+.tabs-left > li.active > a.tabs-parent,
+.tabs-left > li.active > a.tabs-parent:hover,
+.tabs-left > li.active > a.tabs-parent:focus {
+
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border: none;
+  border-left: 5px solid #C190E3;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+
+
+
+}
+
+
+.nav-tabs > li > a {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  color: $color_DarkElectricBlue;
+  border-left: 5px solid transparent;
+  border-right: none;
+  padding-left: 5px;
+  margin: 0;
+  @include border-radius();
+  @include transition(all .5s linear);
+  &:hover {
+    @include transition(all .5s linear);
+    border-left: 5px solid transparent;
+    background: #F1FBF9;
+  }
+}
+
+.nav-tabs > li > a:hover {
+
+  border-left: 5px solid transparent;
+  border-bottom: 1px solid transparent;
+
+}
+
+.nav-tabs {
+
+  .tab__num {
+    display: inline-block;
+    padding-right: 10px;
+    &:after {
+      content: '.';
+    }
+  }
+  .tabs-parent {
+    background: #F6F1FB !important;
+
+    &:hover, &:active, &:focus {
+      border-top: 1px solid #F6F1FB;
+      border-left: 5px solid #C190E3;
+    }
+
+    &.main {
+      background:#EAEFEF !important;
+      min-height: 90px;
+
+      &:hover{
+        background:#F1FBF9 !important;
+      }
+    }
+  }
+}
+
+.nav-tabs.tabs-left,
+.tab-pane {
+  margin-top: 100px;
+}
+
+.tabMenu {
+  height: 50px;
+
+  //margin-left: -275px;
+  background: #DAE3E3;
+  margin-top: -100px;
+
+  .mainMenu {
+    &__right {
+      height: 100%;
+
+      .nav-tabs {
+        border: none;
+        height: 100%;
+
+        >li{
+          height: 100%;
+          a{
+            min-height: inherit;
+            padding: 12px 30px;
+            text-align: center;
+            border: none;
+            display: block;
+            height: 100%;
+
+            @include transition(all .3s linear);
+
+            &:hover{
+              background: lighten($color_DarkElectricBlue, 40%);
+              border-bottom: 4px solid $color_DarkElectricBlue;
+              @include transition(all .3s linear);
+            }
+          }
+          &.active,
+          &:hover,
+          &:focus,
+          &:visited{
+            a{
+              border: none;
+              color: $color_DarkElectricBlue;
+              background: transparent;
+              border-bottom: 4px solid $color_DarkElectricBlue;
+            }
+          }
+        }
+
+      }
+    }
+    
+    @media (max-width: $screen-sm-max) {
+      font-size: 14px;
+
+      &__right .nav-tabs > li a{
+        padding: 12px 15px;
+      }
+    }
+    @media (max-width: $screen-xs-max) {
+      &__right .nav-tabs > li a{
+        font-size: 14px;
+      }
+
+    }
+
+  }
+}
+
+.tabMenu2{
+
+  height: 50px;
+  background: #DAE3E3;
+  margin-top: -100px;
+
+  .mainMenu {
+    &__right {
+      height: 100%;
+
+      .nav-tabs {
+        border: none;
+        height: 100%;
+        display: flex;
+
+        >li{
+          // height: 100%;
+          flex-direction: row;
+          a{
+            min-height: inherit;
+            padding: 13px 30px;
+            text-align: center;
+            border: none;
+            display: block;
+            height: 100%;
+
+            @include transition(all .3s linear);
+
+            &:hover{
+              background: lighten($color_DarkElectricBlue, 40%);
+              border-bottom: 4px solid $color_DarkElectricBlue;
+              @include transition(all .3s linear);
+            }
+          }
+          &.active,
+          &:hover,
+          &:focus,
+          &:visited{
+            a{
+              border: none;
+              color: $color_DarkElectricBlue;
+              background: transparent;
+              border-bottom: 4px solid $color_DarkElectricBlue;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.tabSubMenu {
+  height: 50px;
+  margin-left: -275px;
+  background: #F2FCF9;
+  margin-top: 0px;
+}
+

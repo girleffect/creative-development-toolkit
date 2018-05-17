@@ -1,0 +1,34 @@
+// Fonts
+
+$circularStd-bold:'CircularStd-Bold';
+$circularStd-book:'CircularStd-Book';
+$circularStd-medium:'CircularStd-Medium';
+
+// Colors
+
+$color_HanBlue: #5269C2;
+$color_TangerineYellow: #FFC700;
+$color_MediumTurquoise: #5BD1E6;
+$color_Peridot: #DBE303;
+$color_Tomato: #FF664C;
+$color_BrightLavender: #BA94DE;
+$color_PearlAqua: #73DECB;
+$color_WildStrawberry: #F946AC;
+$color_Gainsboro: #DCDAD7;
+$color_DarkElectricBlue: #517B7E;
+
+
+// Typography
+
+h1{
+  font-size: 30px;
+  font-family: $circularStd-bold;
+  padding-bottom: 20px;
+}
+h2{
+
+
+}
+h3{
+  font-size: 18px;
+}

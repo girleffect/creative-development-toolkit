@@ -1,0 +1,59 @@
+
+// make a button with a lot of help
+@mixin btn($background: transparent,$padding:13px 40px , $border: $color_DarkElectricBlue, $bordeer-radius:0,$highlight: transparent, $lowlight: gray, $text: white, $radius: 0) {
+  border: 1px solid $border;
+  color: $text;
+  border-radius: $radius;
+  text-transform: uppercase;
+  background: $background;
+  padding:$padding;
+  -webkit-border-radius: $bordeer-radius;
+  -moz-border-radius: $bordeer-radius;
+  border-radius:$bordeer-radius ;
+  text-align: center;
+  @include box-shadow(2px 3px 4px #999999);
+  @include transition(all 0.3s linear);
+  &:hover{
+    @include transition(all 0.3s linear);
+    text-decoration: none;
+    color: #fff;
+    background:lighten($background, 10%);
+
+  }
+
+}
+
+@mixin border-radius ($radius: 0) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  border-radius:         $radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+
+
+.btn-general{
+@include btn($background: $color_DarkElectricBlue,$bordeer-radius: 5px);
+}
+
+//.link-to-page{
+//  display: block;
+//  border-left: 30px solid $color_BrightLavender;
+//  border-top: 15px solid transparent;
+//  border-bottom: 15px solid transparent;
+//}
+
+
+
+
